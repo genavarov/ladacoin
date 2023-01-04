@@ -91,7 +91,7 @@ void UpdateTime(CBlockHeader* pblock, const CBlockIndex* pindexPrev)
 		//LogPrintf("Testing 0 in LadacoinMiner : Nowback: %s NowCent: %s\n", nNowBack, nNowCent);
 			
 		if((pindexPrev->GetBlockTime() + 1 + Params().TargetSpacing() + Params().TargetSpacing() - nNowBack) < GetAdjustedTime()){
-			pblock->nTime = std::min(pindexPrev->GetBlockTime()+ 1 + Params().TargetSpacing() + 3600 , GetAdjustedTime());
+			pblock->nTime = std::min(pindexPrev->GetBlockTime()+ 1 + Params().TargetSpacing() + 64800 , GetAdjustedTime());
 		    //LogPrintf("Testing 1 in LadacoinMiner : Min Central time: %s over limit: (%s), Real -Back time create new block ! wait...\n", GetAdjustedTime(), pindexPrev->GetBlockTime()+ 1 + Params().TargetSpacing() + 30);
 		}else if((pindexPrev->GetBlockTime() + 1 + Params().TargetSpacing() - nNowBack) < GetAdjustedTime()){
 			pblock->nTime = std::min(pindexPrev->GetBlockTime()+ 1 + Params().TargetSpacing() + 360 , GetAdjustedTime());
